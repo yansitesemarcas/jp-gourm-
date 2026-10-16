@@ -23,7 +23,7 @@ products.forEach(p=>{
   if(priceValue==null){alert("O valor desse sabor ainda precisa ser confirmado. Consulte pelo WhatsApp antes de adicionar.");return;}
   cart.push({id:p.id,name:p.name,size:size.value,qty:amount,unit:priceValue});
   renderCart();
-  document.querySelector("#pedido").scrollIntoView({behavior:"smooth",block:"start"});
+  document.querySelector("#carrinho").scrollIntoView({behavior:"smooth",block:"start"});
  });
  productRoot.appendChild(card);
 });
