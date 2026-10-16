@@ -42,14 +42,45 @@ function renderCart(){
  const total=cart.reduce((sum,item)=>sum+item.unit*item.qty,0);
  document.querySelector("#total").textContent=money(total);
 }
+const fulfillmentInputs=document.querySelectorAll('input[name="fulfillment"]');
+const addressFields=document.querySelector("#address-fields");
+const paymentSelect=document.querySelector("#payment");
+const changeFields=document.querySelector("#change-fields");
+fulfillmentInputs.forEach(input=>input.addEventListener("change",()=>{
+ addressFields.hidden=document.querySelector('input[name="fulfillment"]:checked').value!=="Delivery";
+}));
+paymentSelect.addEventListener("change",()=>{changeFields.hidden=paymentSelect.value!=="Dinheiro";});
 document.querySelector("#send").addEventListener("click",()=>{
  if(!cart.length){alert("Adicione pelo menos um sabor ao pedido.");return;}
  const name=document.querySelector("#customer").value.trim();
- if(!name){document.querySelector("#customer").focus();alert("Informe seu nome para continuar.");return;}
+ const phone=document.querySelector("#phone").value.trim();
+ if(!name||!phone){alert("Preencha seu nome completo e WhatsApp.");return;}
+ const fulfillment=document.querySelector('input[name="fulfillment"]:checked').value;
+ const payment=paymentSelect.value;
  const notes=document.querySelector("#notes").value.trim();
- const lines=cart.map(item=>`• ${item.qty}x ${item.name} (${item.size} ml) — ${money(item.unit*item.qty)}`);
  const total=cart.reduce((sum,item)=>sum+item.unit*item.qty,0);
- const message=[ "Olá! Quero fazer um pedido na J&P Gourmet.","",`Nome: ${name}`,"",...lines,"",`Total: ${money(total)}`,"","Retirada: Rua Rubi, 37, Mondubim, Fortaleza - CE","Pagamento: Pix, dinheiro ou cartão.",notes?`Observações: ${notes}`:"","Pode confirmar a disponibilidade e combinar a retirada?"].filter(Boolean).join("\n");
+ const lines=cart.map(item=>`• ${item.qty}x ${item.name} (${item.size} ml) — ${money(item.unit*item.qty)}`);
+ const details=[];
+ if(fulfillment==="Delivery"){
+  const street=document.querySelector("#street").value.trim();
+  const number=document.querySelector("#number").value.trim();
+  const neighborhood=document.querySelector("#neighborhood").value.trim();
+  const complement=document.querySelector("#complement").value.trim();
+  if(!street||!number||!neighborhood){alert("Para delivery, preencha rua, número e bairro.");return;}
+  details.push(`Endereço: ${street}, ${number}, ${neighborhood}`);
+  if(complement)details.push(`Complemento: ${complement}`);
+ }else{details.push("Retirada: Rua Rubi, 37, Mondubim, Fortaleza - CE");}
+ details.push(`Pagamento: ${payment}`);
+ if(payment==="Dinheiro"){
+  const change=document.querySelector("#change").value.trim();
+  details.push(change?`Troco solicitado para: ${change}`:"Troco: não precisa / não informado");
+ }
+ const message=["Olá! Quero fazer um pedido na J&P Gourmet.","",`Nome: ${name}`,`WhatsApp: ${phone}`,`Recebimento: ${fulfillment}`,"",...details,"",...lines,"",`Total: ${money(total)}`,notes?`Observações: ${notes}`:"","Pode confirmar meu pedido, por favor?"].filter(Boolean).join("\n");
  window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`,"_blank","noopener,noreferrer");
+});
+document.querySelector("#feedback-form").addEventListener("submit",event=>{
+ event.preventDefault();
+ const feedback=document.querySelector("#feedback").value.trim();
+ if(feedback)window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Olá! Meu feedback sobre a J&P Gourmet: "+feedback)}`,"_blank","noopener,noreferrer");
 });
 renderCart();
