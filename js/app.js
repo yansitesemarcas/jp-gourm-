@@ -1,17 +1,17 @@
 const WHATSAPP = "5585998159658";
 const products = [
- {id:"kinder",name:"Kinder Bueno",desc:"Chocolate cremoso com um toque irresistível.",prices:{"200":15,"500":25},image:"assets/img/kinder-bueno.jpg",emoji:"🍫"},
- {id:"avela",name:"Avelã",desc:"Sabor marcante e textura crocante.",prices:{"200":12,"500":22},image:"assets/img/avela.jpg",emoji:"🌰"},
- {id:"ninho",name:"Leite Ninho",desc:"Cremosa, docinha e cheia de sabor.",prices:{"200":12,"500":22},image:"assets/img/leite-ninho.jpg",emoji:"🥛"},
- {id:"ovomaltine",name:"Ovomaltine",desc:"O sabor maltado que todo mundo reconhece.",prices:{"200":12,"500":22},image:"assets/img/ovomaltine.jpg",emoji:"🍿"},
- {id:"nutella",name:"Nutella",desc:"Consulte a disponibilidade e o valor pelo WhatsApp.",prices:{"200":null,"500":null},image:"assets/img/nutella.jpg",emoji:"🍫"}
+ {id:"kinder",name:"Kinder Bueno",desc:"Chocolate cremoso com um toque irresistível.",prices:{"200":15,"500":25},image:"assets/img/IMG_20261016_190852_456.jpg",emoji:"🍫"},
+ {id:"avela",name:"Avelã",desc:"Sabor marcante e textura crocante.",prices:{"200":12,"500":22},image:"assets/img/IMG_20261016_190920_649.jpg",emoji:"🌰"},
+ {id:"ninho",name:"Leite Ninho",desc:"Cremosa, docinha e cheia de sabor.",prices:{"200":12,"500":22},image:"assets/img/IMG_20261016_190938_773.jpg",emoji:"🥛"},
+ {id:"ovomaltine",name:"Ovomaltine",desc:"O sabor maltado que todo mundo reconhece.",prices:{"200":12,"500":22},image:null,emoji:"🍿"},
+ {id:"nutella",name:"Nutella",desc:"Consulte a disponibilidade e o valor pelo WhatsApp.",prices:{"200":null,"500":null},image:null,emoji:"🍫"}
 ];
 const cart=[];
 const money=value=>value==null?"Consulte":value.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
 const productRoot=document.querySelector("#products");
 products.forEach(p=>{
  const card=document.createElement("article");card.className="product";
- card.innerHTML=`<div class="product-art"><img src="${p.image}" alt="Pipoca gourmet sabor ${p.name}" onerror="this.remove();this.parentElement.insertAdjacentHTML('beforeend','<span class=&quot;emoji&quot;>${p.emoji}</span>')"></div>
+ card.innerHTML=`<div class="product-art">${p.image ? `<img src="${p.image}" alt="Pipoca gourmet sabor ${p.name}" onerror="this.remove();this.parentElement.insertAdjacentHTML('beforeend','<span class="photo-soon">Foto em breve</span>')">` : '<span class="photo-soon">Foto em breve</span>'}</div>
  <div class="product-body"><h3>${p.name}</h3><p>${p.desc}</p><div class="price" data-price>${money(p.prices["200"])}</div>
  <div class="controls"><select aria-label="Tamanho de ${p.name}" data-size><option value="200">200 ml</option><option value="500">500 ml</option></select><input aria-label="Quantidade de ${p.name}" data-qty type="number" min="1" max="99" value="1"></div>
  <button class="add" type="button">Adicionar ao pedido</button></div>`;
