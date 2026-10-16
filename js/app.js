@@ -52,16 +52,25 @@ fulfillmentInputs.forEach(input=>input.addEventListener("change",()=>{
  addressFields.hidden=document.querySelector('input[name="fulfillment"]:checked').value!=="Delivery";
 }));
 paymentSelect.addEventListener("change",()=>{changeFields.hidden=paymentSelect.value!=="Dinheiro";});
-document.querySelector("#proceed").addEventListener("click",()=>{
- if(!cart.length){alert("Adicione pelo menos um produto ao carrinho antes de prosseguir.");return;}
- const panel=document.querySelector("#carrinho");
- const fields=document.querySelector("#checkout-fields");
- const proceed=document.querySelector("#proceed");
+document.querySelector("#proceed").addEventListener("click",function(event){
+ event.preventDefault();
+ if(cart.length===0){
+  alert("Adicione pelo menos um produto ao carrinho antes de prosseguir.");
+  return;
+ }
+ const panel=document.getElementById("carrinho");
+ const fields=document.getElementById("checkout-fields");
+ const button=document.getElementById("proceed");
+ if(!panel||!fields||!button){
+  alert("Não consegui abrir a finalização. Atualize a página e tente novamente.");
+  return;
+ }
  panel.hidden=false;
  fields.hidden=false;
- proceed.hidden=true;
+ button.style.display="none";
+ fields.removeAttribute("hidden");
+ fields.style.display="block";
  fields.scrollIntoView({behavior:"smooth",block:"start"});
- window.setTimeout(()=>document.querySelector("#customer").focus({preventScroll:true}),350);
 });
 document.querySelector("#send").addEventListener("click",()=>{
  if(!cart.length){alert("Adicione pelo menos um sabor ao pedido.");return;}
