@@ -86,9 +86,4 @@ document.querySelector("#send").addEventListener("click",()=>{
  const message=["Olá! Quero fazer um pedido na J&P Gourmet.","",`Nome: ${name}`,`WhatsApp: ${phone}`,`Recebimento: ${fulfillment}`,"",...details,"",...lines,"",`Total: ${money(total)}`,notes?`Observações: ${notes}`:"","Pode confirmar meu pedido, por favor?"].filter(Boolean).join("\n");
  window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`,"_blank","noopener,noreferrer");
 });
-document.querySelector("#feedback-form").addEventListener("submit",event=>{
- event.preventDefault();
- const feedback=document.querySelector("#feedback").value.trim();
- if(feedback)window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Olá! Meu feedback sobre a J&P Gourmet: "+feedback)}`,"_blank","noopener,noreferrer");
-});
 renderCart();
