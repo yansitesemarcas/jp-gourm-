@@ -54,9 +54,14 @@ fulfillmentInputs.forEach(input=>input.addEventListener("change",()=>{
 paymentSelect.addEventListener("change",()=>{changeFields.hidden=paymentSelect.value!=="Dinheiro";});
 document.querySelector("#proceed").addEventListener("click",()=>{
  if(!cart.length){alert("Adicione pelo menos um produto ao carrinho antes de prosseguir.");return;}
- document.querySelector("#checkout-fields").hidden=false;
- document.querySelector("#proceed").hidden=true;
- document.querySelector("#customer").focus();
+ const panel=document.querySelector("#carrinho");
+ const fields=document.querySelector("#checkout-fields");
+ const proceed=document.querySelector("#proceed");
+ panel.hidden=false;
+ fields.hidden=false;
+ proceed.hidden=true;
+ fields.scrollIntoView({behavior:"smooth",block:"start"});
+ window.setTimeout(()=>document.querySelector("#customer").focus({preventScroll:true}),350);
 });
 document.querySelector("#send").addEventListener("click",()=>{
  if(!cart.length){alert("Adicione pelo menos um sabor ao pedido.");return;}
