@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header class="top" id="inicio"><a class="brand-mark" href="#inicio" aria-label="J&P Gourmet"><img src="assets/img/Screenshot_20261016_190959_InstaPro2%20.png" alt="Logo J&P Gourmet"></a></header>
+<header class="top" id="inicio"><a class="brand-mark" href="#inicio" aria-label="J&P Gourmet"><img src="assets/img/Screenshot_20261016_190959_InstaPro2%20.png" alt="Logo J&P Gourmet"></a><a class="top-cart" href="#carrinho">🛒 Carrinho <span id="count">0</span></a></header>
 <main>
 <section class="hero"><div class="hero-content"><img class="hero-logo" src="assets/img/Screenshot_20261016_190959_InstaPro2%20.png" alt="J&P Gourmet" onerror="this.style.display='none'"><p class="eyebrow">PIPOCA GOURMET • FEITA COM CARINHO</p><h1>Pequenos momentos,<br><em>grandes sabores.</em></h1><p>Uma explosão de sabor para deixar qualquer momento mais especial.</p><a class="button" href="#sabores">Ver sabores</a></div></section>
 <section class="catalog" id="sabores"><p class="eyebrow">ESCOLHA SEU FAVORITO</p><h2>Nossos sabores</h2><p class="intro">Selecione o tamanho e a quantidade. O preço muda automaticamente.</p><div class="products" id="products"></div></section>
@@ -24,12 +24,12 @@
   <div class="cart">
     <div id="items"><p class="empty">Seu carrinho ainda está vazio.</p></div>
     <div class="total">Total <strong id="total">R$ 0,00</strong></div>
-    <label for="customer">Seu nome</label><input id="customer" placeholder="Como podemos te chamar?" autocomplete="name">
+    <label for="customer">Nome completo</label><input id="customer" placeholder="Nome completo" autocomplete="name" required><label for="phone">WhatsApp</label><input id="phone" type="tel" placeholder="(85) 99999-9999" autocomplete="tel" required><fieldset class="checkout-choice"><legend>Como deseja receber?</legend><label><input type="radio" name="fulfillment" value="Retirada" checked> Retirar no local</label><label><input type="radio" name="fulfillment" value="Delivery"> Delivery</label></fieldset><div id="address-fields" hidden><label for="street">Rua/avenida</label><input id="street" autocomplete="street-address" placeholder="Rua ou avenida"><label for="number">Número</label><input id="number" placeholder="Número"><label for="neighborhood">Bairro</label><input id="neighborhood" placeholder="Bairro"><label for="complement">Complemento</label><input id="complement" placeholder="Apartamento, referência (opcional)"></div><label for="payment">Forma de pagamento</label><select id="payment"><option value="Pix">Pix</option><option value="Dinheiro">Dinheiro</option></select><div id="change-fields" hidden><label for="change">Precisa de troco? Se sim, troco para quanto?</label><input id="change" inputmode="decimal" placeholder="Ex.: R$ 50,00 ou deixe em branco se não precisar"></div>
     <label for="notes">Observações</label><textarea id="notes" placeholder="Algum detalhe para o pedido?"></textarea>
-    <p class="footer-cart__pickup">Retirada: Rua Rubi, 37 — Mondubim, Fortaleza, CE.<br>Pagamento: Pix, dinheiro ou cartão.</p>
+    <p class="footer-cart__pickup">Retirada: Rua Rubi, 37 — Mondubim, Fortaleza, CE. Pagamento por Pix ou dinheiro.</p>
     <button class="button" id="send" type="button">Enviar pedido pelo WhatsApp</button>
   </div>
 </section>
-<footer id="rodape"><a class="brand-mark footer-mark" href="#inicio" aria-label="J&P Gourmet"><img src="assets/img/Screenshot_20261016_190959_InstaPro2%20.png" alt="Logo J&P Gourmet"></a><p>Feito com carinho, um sabor de cada vez.</p><a href="https://instagram.com/pipoca.dajerschow" target="_blank" rel="noopener">Instagram @pipoca.dajerschow</a></footer>
+<footer id="rodape"><a class="brand-mark footer-mark" href="#inicio" aria-label="J&P Gourmet"><img src="assets/img/Screenshot_20261016_190959_InstaPro2%20.png" alt="Logo J&P Gourmet"></a><p>Feito com carinho, um sabor de cada vez.</p><a href="https://wa.me/5585998159658" target="_blank" rel="noopener">WhatsApp da loja</a><a href="https://instagram.com/pipoca.dajerschow" target="_blank" rel="noopener">Instagram @pipoca.dajerschow</a><a href="https://maps.google.com/?q=Rua+Rubi+37+Mondubim+Fortaleza" target="_blank" rel="noopener">Localização</a><form class="feedback" id="feedback-form"><label for="feedback">Deixe seu feedback</label><textarea id="feedback" placeholder="Conte como foi sua experiência" required></textarea><button type="submit">Enviar feedback pelo WhatsApp</button></form></footer>
 <script src="js/app.js"></script>
 </body></html>
