@@ -52,6 +52,12 @@ fulfillmentInputs.forEach(input=>input.addEventListener("change",()=>{
  addressFields.hidden=document.querySelector('input[name="fulfillment"]:checked').value!=="Delivery";
 }));
 paymentSelect.addEventListener("change",()=>{changeFields.hidden=paymentSelect.value!=="Dinheiro";});
+document.querySelector("#proceed").addEventListener("click",()=>{
+ if(!cart.length){alert("Adicione pelo menos um produto ao carrinho antes de prosseguir.");return;}
+ document.querySelector("#checkout-fields").hidden=false;
+ document.querySelector("#proceed").hidden=true;
+ document.querySelector("#customer").focus();
+});
 document.querySelector("#send").addEventListener("click",()=>{
  if(!cart.length){alert("Adicione pelo menos um sabor ao pedido.");return;}
  const name=document.querySelector("#customer").value.trim();
