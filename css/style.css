@@ -27,3 +27,8 @@ footer#rodape{padding:38px 20px;text-align:center;background:var(--brown);color:
 .product-art .photo-soon{display:grid;place-items:center;width:100%;height:100%;padding:18px;text-align:center;color:var(--brown);font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:700;background:linear-gradient(135deg,#f0dfc8,#e4c49b)}
 
 [hidden]{display:none!important}
+
+/* Fotos dos produtos completas, sem cortar as embalagens */
+.product-art{height:220px;padding:10px;background:linear-gradient(135deg,#f8eee0,#ead5b8)}
+.product-art img{width:100%;height:100%;object-fit:contain;object-position:center}
+@media(max-width:650px){.product-art{height:160px;padding:7px}.product-art img{object-fit:contain}}
