@@ -38,3 +38,8 @@ footer#rodape{padding:38px 20px;text-align:center;background:var(--brown);color:
 .product-art img{display:block;width:100%;height:auto!important;max-height:360px;object-fit:contain;object-position:center}
 .product-art .photo-soon{min-height:210px}
 @media(max-width:650px){.product-art{height:auto!important;padding:8px}.product-art img{height:auto!important;max-height:300px}.product-art .photo-soon{min-height:150px}}
+
+/* Carrinho com contraste alto: texto e ícone escuros sobre dourado */
+.top-cart{background:var(--gold)!important;color:var(--brown)!important;border:1px solid var(--gold)!important;box-shadow:0 4px 12px #160d0925}
+.top-cart span{background:var(--brown)!important;color:var(--cream)!important}
+.top-cart:hover{background:#e7b875!important;border-color:#e7b875!important}
