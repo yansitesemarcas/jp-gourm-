@@ -25,3 +25,5 @@ footer#rodape{padding:38px 20px;text-align:center;background:var(--brown);color:
 
 /* Marcador para fotos ainda não disponíveis */
 .product-art .photo-soon{display:grid;place-items:center;width:100%;height:100%;padding:18px;text-align:center;color:var(--brown);font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:700;background:linear-gradient(135deg,#f0dfc8,#e4c49b)}
+
+[hidden]{display:none!important}
