@@ -11,7 +11,7 @@ const money=value=>value==null?"Consulte":value.toLocaleString("pt-BR",{style:"c
 const productRoot=document.querySelector("#products");
 products.forEach(p=>{
  const card=document.createElement("article");card.className="product";
- card.innerHTML=`<div class="product-art">${p.image ? `<img src="${p.image}" alt="Pipoca gourmet sabor ${p.name}" onerror="this.remove();this.parentElement.insertAdjacentHTML('beforeend','<span class="photo-soon">Foto em breve</span>')">` : '<span class="photo-soon">Foto em breve</span>'}</div>
+ card.innerHTML=`<div class="product-art">${p.image ? `<img src="${p.image}" alt="Pipoca gourmet sabor ${p.name}" onerror="this.remove();this.parentElement.insertAdjacentHTML('beforeend','<span class=&quot;photo-soon&quot;>Foto em breve</span>')">` : '<span class="photo-soon">Foto em breve</span>'}</div>
  <div class="product-body"><h3>${p.name}</h3><p>${p.desc}</p><div class="price" data-price>${money(p.prices["200"])}</div>
  <div class="controls"><select aria-label="Tamanho de ${p.name}" data-size><option value="200">200 ml</option><option value="500">500 ml</option></select><input aria-label="Quantidade de ${p.name}" data-qty type="number" min="1" max="99" value="1"></div>
  <button class="add" type="button">Adicionar ao pedido</button></div>`;
