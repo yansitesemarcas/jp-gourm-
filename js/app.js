@@ -23,7 +23,7 @@ products.forEach(p=>{
   if(priceValue==null){alert("O valor desse sabor ainda precisa ser confirmado. Consulte pelo WhatsApp antes de adicionar.");return;}
   cart.push({id:p.id,name:p.name,size:size.value,qty:amount,unit:priceValue});
   renderCart();
-  document.querySelector("#carrinho").scrollIntoView({behavior:"smooth",block:"start"});
+  document.querySelector("#carrinho").hidden=false;document.querySelector("#cart-toggle").setAttribute("aria-expanded","true");
  });
  productRoot.appendChild(card);
 });
@@ -42,6 +42,8 @@ function renderCart(){
  const total=cart.reduce((sum,item)=>sum+item.unit*item.qty,0);
  document.querySelector("#total").textContent=money(total);
 }
+document.querySelector("#cart-toggle").addEventListener("click",()=>{const panel=document.querySelector("#carrinho");panel.hidden=!panel.hidden;document.querySelector("#cart-toggle").setAttribute("aria-expanded",String(!panel.hidden));});
+document.addEventListener("click",event=>{const panel=document.querySelector("#carrinho");if(!panel.hidden&&!panel.contains(event.target)&&!event.target.closest("#cart-toggle")){panel.hidden=true;document.querySelector("#cart-toggle").setAttribute("aria-expanded","false");}});
 const fulfillmentInputs=document.querySelectorAll('input[name="fulfillment"]');
 const addressFields=document.querySelector("#address-fields");
 const paymentSelect=document.querySelector("#payment");
