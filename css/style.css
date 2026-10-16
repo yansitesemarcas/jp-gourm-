@@ -12,3 +12,13 @@ footer#rodape{padding:38px 20px;text-align:center;background:var(--brown);color:
 @media(max-width:650px){.footer-cart{grid-template-columns:1fr;padding:52px 18px;gap:16px}.footer-cart__head{text-align:center}.footer-cart .cart{padding:18px}}
 
 .top{position:relative}.top-cart{position:absolute;right:clamp(16px,5vw,60px);display:inline-flex;gap:8px;align-items:center;color:var(--cream);font-weight:800;font-size:13px;border:1px solid #d5a15e88;border-radius:24px;padding:10px 14px}.top-cart span{display:inline-grid;place-items:center;min-width:22px;height:22px;border-radius:50%;background:var(--gold);color:var(--brown);padding:0 5px}.checkout-choice{border:1px solid var(--line);border-radius:8px;padding:12px;margin:16px 0}.checkout-choice legend{font-size:12px;font-weight:800;padding:0 5px}.checkout-choice label{display:flex!important;align-items:center;gap:8px;margin:8px 0!important;font-size:14px!important}.checkout-choice input{width:auto!important}#address-fields[hidden],#change-fields[hidden]{display:none}#address-fields,#change-fields{padding:12px 0}.cart select{width:100%;border:1px solid var(--line);background:#fffdf9;border-radius:5px;padding:10px;color:var(--ink);font:inherit}.feedback{width:min(100%,420px);display:grid;gap:8px;margin-top:12px}.feedback label{font-size:12px;font-weight:800}.feedback textarea{min-height:70px;border:1px solid var(--line);border-radius:5px;padding:10px;font:inherit}.feedback button{border:0;border-radius:5px;background:var(--gold);color:var(--brown);padding:11px 14px;font-weight:800;cursor:pointer}@media(max-width:500px){.top-cart{right:10px;padding:8px;font-size:11px}.top .brand-mark{margin-right:auto}.top{justify-content:flex-start;padding-left:14px}}
+
+/* Carrinho suspenso no topo, alinhado à direita */
+.top{position:relative;justify-content:flex-start;padding-right:clamp(18px,5vw,70px)}
+.top .brand-mark{margin-right:auto}
+.top-cart{position:static;flex-shrink:0;cursor:pointer;font:700 13px "Nunito Sans",sans-serif}
+.cart-panel{position:absolute;z-index:1000;top:calc(100% + 8px);right:clamp(12px,4vw,50px);width:min(460px,calc(100vw - 24px));max-height:calc(100vh - 105px);overflow:auto;background:var(--paper);border:1px solid var(--gold);border-radius:12px;padding:20px;box-shadow:0 18px 55px #160d0960;color:var(--ink)}
+.cart-panel[hidden]{display:none}
+.cart-panel .footer-cart__head{display:none}
+.cart-panel .cart{padding:18px;box-shadow:none}
+@media(max-width:500px){.top{padding-left:14px;padding-right:12px;gap:12px}.top .brand-mark{margin-right:auto}.top-cart{right:auto;position:static}.cart-panel{right:8px;width:calc(100vw - 16px);padding:12px}}
